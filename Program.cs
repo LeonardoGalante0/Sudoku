@@ -24,17 +24,31 @@ namespace Sudoku
             };
             StampaSudoku(sudoku);
 
+            while (true)
+            {
+                Console.WriteLine("In che riga vuoi inserire il numero?");
+                int riga = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("In che colonna vuoi inserire il numero?");
+                int colonna = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Che numero vuoi inserire?");
+                int numero = Int32.Parse(Console.ReadLine());
+
+                sudoku[(riga-1), (colonna-1)] = numero;
+                StampaSudoku(sudoku);
+            }
             Console.ReadKey();
         }
         public static void StampaSudoku(int[,] sudoku)
         {
-            for (int i = 0; i < 9; i++)
+            Console.WriteLine("+-----+-----+-----+");
+
+            for (int i = 1; i < 10; ++i)
             {
-                Console.WriteLine();
-                for (int j = 0; j < 9; j++)
-                {
-                    Console.Write(sudoku[i, j] + " ");
-                }
+                for (int j = 1; j < 10; ++j)
+                    Console.Write("|{0}", sudoku[i - 1, j - 1]);
+
+                Console.WriteLine("|");
+                if (i % 3 == 0) Console.WriteLine("+-----+-----+-----+");
             }
         }
     }
