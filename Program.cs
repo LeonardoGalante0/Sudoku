@@ -23,19 +23,8 @@ namespace Sudoku
                     { 0, 0, 0, 6, 0, 9, 5, 8, 2 }
             };
             StampaSudoku(sudoku);
+            inserimento(sudoku);
 
-            while (true)
-            {
-                Console.WriteLine("In che riga vuoi inserire il numero?");
-                int riga = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("In che colonna vuoi inserire il numero?");
-                int colonna = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Che numero vuoi inserire?");
-                int numero = Int32.Parse(Console.ReadLine());
-
-                sudoku[(riga-1), (colonna-1)] = numero;
-                StampaSudoku(sudoku);
-            }
             Console.ReadKey();
         }
         public static void StampaSudoku(int[,] sudoku)
@@ -49,6 +38,22 @@ namespace Sudoku
 
                 Console.WriteLine("|");
                 if (i % 3 == 0) Console.WriteLine("+-----+-----+-----+");
+            }
+        }
+
+        public static void inserimento(int[,] sudoku)
+        {
+            while (true)
+            {
+                Console.WriteLine("In che riga vuoi inserire il numero?");
+                int riga = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("In che colonna vuoi inserire il numero?");
+                int colonna = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Che numero vuoi inserire?");
+                int numero = Int32.Parse(Console.ReadLine());
+
+                sudoku[(riga - 1), (colonna - 1)] = numero;
+                StampaSudoku(sudoku);
             }
         }
     }
